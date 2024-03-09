@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import "../styles/Merchantsignup.css";
-import axios from "axios";
+import axios from 'axios';
+import React, { useState } from 'react'
+import "../styles/usersignup.css"
+const Usersignup = () => {
 
-const Merchantsignup = () => {
-  let [name, setname] = useState("");
-  let [gst_number, setgstno] = useState("");
-  let [phone, setphone] = useState("");
-  let [email, setemail] = useState("");
-  let [password, setpasssword] = useState("");
+    let [name, setname] = useState("");
+    let [phone, setphone] = useState("");
+    let [email, setemail] = useState("");
+    let [gender, setgender] = useState("");
+    let [password, setpasssword] = useState("");
+    let [age, setage] = useState("");
 
-  let data = { name, email, gst_number, phone, email, password };
+    
+  let data = { name, email,phone, gender, password,age };
 
   let addMerchant = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/merchant", data)
+      .post("http://localhost:8080/User", data)
       .then((res) => {
         console.log(res);
-        alert("Sign up successfully");
+        alert(" User Sign up successfully");
       })
       .catch((err) => {
         console.log(err);
@@ -25,9 +27,11 @@ const Merchantsignup = () => {
       });
   };
 
+
   return (
-    <div className="merchantsignup">
-      <form onSubmit={addMerchant} action="">
+    <div className="usersignup">
+ <form onSubmit={addMerchant} action="">
+   
         <label htmlFor="">Name</label>
         <input
           required
@@ -36,13 +40,13 @@ const Merchantsignup = () => {
           type="text"
           placeholder="Enter your name"
         />
-        <label htmlFor="">Gst_number</label>
+        <label htmlFor="">Gender</label>
         <input
           required
-          value={gst_number}
-          onChange={(e) => setgstno(e.target.value)}
+          value={gender}
+          onChange={(e) => setgender(e.target.value)}
           type="text"
-          placeholder="Enter your gstno"
+          placeholder="Enter your gender"
         />
         <label htmlFor="">Phone no</label>
         <input
@@ -69,10 +73,21 @@ const Merchantsignup = () => {
           type="text"
           placeholder="Enter your password"
         />
+         <label htmlFor="">age</label>
+        <input
+          required
+          value={age}
+          onChange={(e) => setage(e.target.value)}
+          type="text"
+          placeholder="Enter your age"
+        />
+
+
         <button className="btn btn-outline-info">Submit</button>
       </form>
+   
     </div>
-  );
-};
+  )
+}
 
-export default Merchantsignup;
+export default Usersignup

@@ -2,25 +2,26 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import "../styles/MerchantLogin.css"
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const MerchantLogin = () => {
 
+  let navigate=useNavigate("")
 
-let [email,setemail]=useState("")
+let [phone,setphone]=useState("")
 let [password,setpassword]=useState("")
 
-console.log(email);
   
 function verifyMerchant(e){
   e.preventDefault(); 
-  axios.post(`http://localhost:8080/merchants/verify/${email}&${password}`)
+  axios.post(`http://localhost:8080/merchant/verify?phone=${phone}&password=${password}`)
 
   .then((res)=>{
     console.log(res);
-    alert("Login Successfully")
+    navigate("/merchanthomepage");
+    alert("Login Successfully");
   })
   .catch((err)=>{
-    console.log("Invalid credentials");
+    alert("Invalid credentials");
   })
  }
 
@@ -28,8 +29,8 @@ function verifyMerchant(e){
     <div className="merchantlogin">
       <Form>
         <Form.Group className="mb-3" controlId="fromGroupEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control value={email}  onChange={(e)=>setemail(e.target.value)}  type="email" placeholder="name@example.com" />
+          <Form.Label>Phone no</Form.Label>
+          <Form.Control value={phone}  onChange={(e)=>setphone(e.target.value)}  type="tel" placeholder="Enter phone no" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="fromGroupPassword">
           <Form.Label>Password</Form.Label>

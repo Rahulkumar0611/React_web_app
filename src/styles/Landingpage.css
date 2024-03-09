@@ -2,6 +2,13 @@
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  /* background-color: rgb(83, 212, 216);   */
+
+}
+.div1{
+  height: 800px;
+background-color: rgb(83, 212, 216);  
+
 }
 
 .landingpage {
@@ -16,6 +23,7 @@
   height: 200px;
   width: 200px;
 }
+
 .landingpage a{
     display: flex; 
      justify-content: space-between; 
@@ -24,4 +32,11 @@
     color:rgb(26, 44, 26);
     text-decoration: none;
     
+}
+.div1 h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  /* margin-top: 20px; */
 }
